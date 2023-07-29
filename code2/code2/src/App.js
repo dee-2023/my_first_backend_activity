@@ -1,79 +1,61 @@
 import Header from './Header';
 import Content from './Content';
 import Footer from './Footer';
-import AddItem from './AddItem';
+import AddBooks from './AddItem';
 import './App.css';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-function App() {
+const App = () => {
 
-  const [items, setItems] = useState(
-   [
+  const [books, setBooks] = useState([
     {
       id: 1,
-      checked: true,
-      itemName: "This is a CSS"
+      BookName: "PHP 8",
+      YearPublished: "2023",
+      Author: "VicS",
+      Category: "Web",
+      status: 1,
     },
     {
       id: 2,
-      checked: true,
-      itemName: "This is a HTML"
+      BookName: "React.js",
+      YearPublished: "2000",
+      Author: "Peter SMith",
+      Category: "Web",
+      status: 1,
 
     },
     {
       id: 3,
-      checked: true,
-      itemName: "This is a Javascript"
+      BookName: "CSS framework",
+      YearPublished: "2005",
+      Author: "Jaguar",
+      Category: "Web",
+      status: 1,
     },
-   ] 
-  )
-  
-  const [newItem, setNewItem] = useState('')
-  
-  //new item 
-  const handleSumbit = (e)=>{
-   e.preventDefault(); //preventing the post page
+    {
+      id: 4,
+      BookName: "Data Science",
+      YearPublished: "2023",
+      Author: "Vic S",
+      Category: "Data",
+      status: 1,
+  },
 
-   console.log('Inserted: ' + newItem)
-    
-   const idx = items.length ? items[items.length - 1 ].id + 1 : 1; //identifying the last id created
-   /* 
-    if(items.length > 0){
-      //items.length = 3
-      //3 - 1 
-      //2
-      //[2].id
-     idx = items[items.length - 1].id + 1  //4
-    } else {
-      idx = 1
-    }*/
+])
 
-   console.log(idx);
-   const myNewItem = { 
-                      id:idx, 
-                      checked:false,  
-                      itemName:newItem 
-                     };
-   
-   const listItems = [...items, myNewItem]; //adding an element into an arrays of obejcts, using spread operator
-   setItems(listItems);
-   setNewItem('');
-  }
-
-  const handleCheckBox = (id)=>{
-  const listItems = items.map( (item) => item.id === id ? { ...item, checked: !item.checked } : item )
-  setItems(listItems);
-  }
-
-  const handleDelete = (id)=> {
+const handleDelete = (id)=> {
   console.log('test delete ' + id)
-  const listItems = items.filter( (item) => item.id !== id  )
-  setItems(listItems)
-  }
+  const listBooks = books.filter( (book) => books.id !== id  )
+  setBooks(listBooks)
+}
 
-  
-  let average = 100 / 5;
+
+
+
+
+
 
   return (
     
@@ -82,27 +64,22 @@ function App() {
       <Header 
       title="WD74P" 
       description="Header for React CRUD (create, read, update and delete) app example" 
-      average={average} 
+
       />
 
-      <AddItem
-      handleSumbit = {handleSumbit}
-      newItem = {newItem} 
-      setNewItem = {setNewItem}
-      />
+      <AddBooks/>
 
 
       <Content 
-      items = {items} 
-      handleCheckBox = {handleCheckBox}
-      handleDelete = {handleDelete}
+      books = {books} 
       />
 
       <Footer />
 
     </div>
+    
 
   );
-}
+};
 
-export default App;
+export default App

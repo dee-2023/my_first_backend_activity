@@ -1,21 +1,21 @@
 
-const AddItem = ( {handleSumbit, newItem, setNewItem} ) =>{
+const AddBooks = ( {handleSumbit, newBooks, setNewBooks} ) =>{
 
     return (
-        <div className="AddIten">
+        <div className="AddBooks">
 
                 <form className="addForm" onSubmit={handleSumbit}>
 
                     <input 
                     type="text"
-                    placeholder="Add Item"
+                    placeholder="Add Books"
                     setfocus
                     required
-                    value={newItem}
-                    onChange={ (e) => setNewItem(e.target.value) }
+                    value={newBooks}
+                    onChange={ (e) => setNewBooks(e.target.value) }
                     />   
 
-                    <button type="submit">Add Itenm </button>
+                    <button type="submit">Add Books </button>
 
                 </form>
 
@@ -25,4 +25,4 @@ const AddItem = ( {handleSumbit, newItem, setNewItem} ) =>{
 
 }
 
-export default AddItem;
+export default AddBooks;

@@ -1,43 +1,41 @@
 import { FaTrashAlt } from "react-icons/fa";
 
-const Content = ( {items, handleCheckBox, handleDelete} ) => {
+const Content = ( {books, handleCheckBox, handleDelete} ) => {
 
     return(
             <main> 
                <ul>  
-                 {  items.map( 
-                   
-                    (item) => (
+                 {books.map(book => (
                   
-                    <li className="item">
+                    <li className="item" key={books.id}>
                     <input 
                     type="checkbox" 
-                    checked={item.checked}
-                    onChange={ () => handleCheckBox(item.id) }
+                    checked={books.checked}
+                    onChange={ () => handleCheckBox(books.id) }
                     />
 
                     {/*label item name*/} 
-                    <label>
-                     {item.itemName}   
-                    </label>
+                    <label>{books.bookName}   </label>
+                    <p>Year Published: {book.YearPublished}</p>
+                    <p>Author: {book.Author}</p>
+                    <p>Category: {book.Category}</p>
+                    <p>Status: {book.status}</p>
 
                     {/*delete*/}
                     &nbsp; 
                     
                     <FaTrashAlt 
-                     onClick={()=> handleDelete(item.id)}   
+                     onClick={()=> handleDelete(books.id)}   
                      role="button"
-                     aria-label={`Delete ${item.item} ` } 
+                     aria-label={`Delete ${books.books} ` } 
                     />
 
                    </li>
-                    )
-                )}
+                ))}
+            </ul>     
+        </main>
+    );
 
-               </ul>     
-            </main>
-    )
-
-}
+};
 
 export default Content;
